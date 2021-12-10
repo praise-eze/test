@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>LIT Protocol Minimal JWT Example</title>
+    <title>LITDWAY DAO</title>
     <script
       onload="LitJsSdk.litJsSdkLoadedInALIT()"
       src="https://jscdn.litgateway.com/index.web.js"
@@ -28,16 +28,16 @@
 
       async function provisionAccess() {
         const contractAddress = '0x88B48F654c30e99bc2e4A1559b4Dcf1aD93FA656';
-const tokenId = '25183451298761956721174036191738219098442504824138882936155247639619145039873';
+window.tokenId = '25183451298761956721174036191738219098442504824138882936155247639619145039873';
 window.chain = "rinkeby";
-        window.authSig = await LitJsSdk.checkAndSignAuthMessage({chain: 'rinkeby'})
+        
         document.getElementById("provisioningStatus").innerText =
-          "Provisioning, please wait...";
+          "Granting access, please wait...";
         window.accessControlConditions = [
           {
             contractAddress: contractAddress,
             standardContractType: "ERC1155",
-            chain: window.chain,
+            chain: "rinkeby",
             method: "balanceOf",
             parameters: [":userAddress", window.tokenId],
             returnValueTest: {
@@ -58,20 +58,25 @@ window.chain = "rinkeby";
           role: "",
           extraData: "",
         };
+        window.authSig = await LitJsSdk.checkAndSignAuthMessage({chain: 'rinkeby'})
         await litNodeClient.saveSigningCondition({
           accessControlConditions: window.accessControlConditions,
           chain: window.chain,
           authSig: window.authSig,
           resourceId: window.resourceId,
         });
+        document.getElementById("logout").innerText =
+          "";
+      
         document.getElementById("provisioningStatus").innerText =
-          "Provisioned!";
+          "Access granted!! you can now request your JWT";
       }
 
       async function requestJwt() {
+        try{
         document.getElementById("requestingStatus").innerText =
           "Requesting JWT, please wait...";
-
+         
         window.jwt = await litNodeClient.getSignedToken({
           accessControlConditions: window.accessControlConditions,
           chain: window.chain,
@@ -81,18 +86,38 @@ window.chain = "rinkeby";
 
         document.getElementById("requestingStatus").innerText =
           "JWT Obtained!  It is  " + window.jwt;
+          document.getElementById("jokeResponse").innerText =
+          'We could have just sent a message like "Password confirmed!!!" but dont you want to see your access token ?';
+      } catch(err)
+      {
+        document.getElementById("requestingStatus").innerText =
+          "Sorry could not generate a password for you cause you are not on the list!! clear entry and try again";
+      }
       }
 
       async function visitProtectedServer() {
         document.getElementById("verificationStatus").innerText =
-          "Redirecting, please wait...";
+          "Redirecting to LITDWAY DAO content, please wait...!!";
         window.location = "/?jwt=" + window.jwt;
+      }
+      async function Logout(){
+        LitJsSdk.disconnectWeb3();
+        document.getElementById("provisioningStatus").innerText =
+          " ";
+          document.getElementById("requestingStatus").innerText =
+          " ";
+          document.getElementById("jokeResponse").innerText =
+          '';
+      
+          window.jwt = undefined;
+        document.getElementById("logout").innerText =
+          "Cleared Entry, you can authenticate !!!";
       }
     </script>
   </head>
 
   <body>
-    <h1>LIT Protocol Minimal JWT Example</h1>
+    <h1>LITDWAY Authentication system</h1>
 
   <!-- <h2>Step 1: Mint an NFT</h2>
     Chain to mint on:
@@ -108,25 +133,33 @@ window.chain = "rinkeby";
     <br />
     <div id="mintingStatus"></div> -->
 
-    <h2>Step 2: Provision access to a resource</h2>
-    <button onclick="provisionAccess()">Provision access</button>
+    <h2>Allow access to your web wallet</h2>
+    <button onclick="provisionAccess()">Allow access</button>
     <br />
     <br />
     <div id="provisioningStatus"></div>
 
-    <h2>Step 3: Request a JWT to authenticate the user</h2>
+    <h2>Request a password as a JWT </h2>
     <button onclick="requestJwt()">Request JWT</button>
     <br />
     <br />
     <div id="requestingStatus"></div>
-
+    <div id="jokeResponse"></div>
     <h2>
-      Step 4: Visit the protected server and include the JWT as a url parameter
+     You can now access LITDWAY DAO content
     </h2>
-    <button onclick="visitProtectedServer()">Visit the protected server</button>
+    <button onclick="visitProtectedServer()">Access LITDWAY DAO </button>
     <br />
     <br />
     <pre id="verificationStatus"></pre>
+  
     <br />
+    <h2>
+      Any step failed or missing click this button before retrying 
+    </h2>
+    <button onclick="Logout()">Clear entry</button>
+    <br/>
+    <br/>
+    <div id="logout"></div>
   </body>
 </html>

@@ -58,4 +58,4 @@ function checkUser(req, res, next) {
 app.use(cookieParser());
 app.use(checkUser);
 app.use("/example.html", express.static(path.join(__dirname, "example.html")));
-app.use("/", express.static(path.join(__dirname, "client/Test/build")));
+app.use("/", express.static(path.join(__dirname, "client/MainWork/build")));
