@@ -22,8 +22,8 @@ function Navhan(){
       <div className="App overflow-visible" style={{
         height: '65px',
         display: 'flex',
-        background: '#000',
-        color: '#fff',
+        background: '#ffd429',
+        color: '#ffd429',
         alignItems: 'center',
         justifyContent: 'space-between'
       }}>
@@ -31,16 +31,16 @@ function Navhan(){
         {/*  <img width={200} height={200} src="/Meta.png" /> */}
           </div>
           <div>
-          <Link  style={{ padding: '0rem 3rem' }} className="text-0.05px text-blue-500 md:text-0.01px" to= './Marketplace'>MarketPlace</Link>
+          <Link  style={{ padding: '0rem 3rem' }} className="text-2xl text-red-700 md:text-xl" to= './Marketplace'><b>MarketPlace</b></Link>
           </div>
           <div>
-          <Link  style={{ padding: '0rem 3rem' }} className="text-0.05px text-blue-500 md:text-0.01px" to= './create-item'>Create NFts</Link>
+          <Link  style={{ padding: '0rem 3rem' }} className="text-2xl text-red-700 md:text-xl" to= './create-item'><b>Create NFts</b></Link>
           </div>
           <div>
-          <Link  style={{ padding: '0rem 3rem' }} className="text-0.05px text-blue-500 md:text-0.01px" to= './XplayVid'>Play Vids</Link>
+          <Link  style={{ padding: '0rem 3rem' }} className="text-2xl text-red-700  md:text-xl" to= './XplayVid'><b>Play Vids</b></Link>
           </div>
           <div>
-          <Link  style={{ padding: '0rem 3rem' }} className="text-0.05px text-blue-500 md:text-0.01px" to= './my-nft'>My Nfts</Link>
+          <Link  style={{ padding: '0rem 3rem' }} className="text-2xl text-red-700 md:text-xl" to= './my-nft'><b>My Nfts</b></Link>
           </div>
    
         </div >

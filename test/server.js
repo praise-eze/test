@@ -53,7 +53,7 @@ function checkUser(req, res, next) {
 
   next();
 }
-
+//
 // Set up the middleware stack
 app.use(cookieParser());
 app.use(checkUser);

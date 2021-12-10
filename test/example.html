@@ -1,11 +1,15 @@
 <html>
   <head>
     <title>LITDWAY DAO</title>
+    <link rel="stylesheet" href="index.css"/>
     <script
       onload="LitJsSdk.litJsSdkLoadedInALIT()"
       src="https://jscdn.litgateway.com/index.web.js"
     ></script>
+    <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+<script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
     <script>
+
       /*
       async function mintNft() {
         document.getElementById("mintingStatus").innerText =
@@ -114,9 +118,46 @@ window.chain = "rinkeby";
           "Cleared Entry, you can authenticate !!!";
       }
     </script>
-  </head>
+    <style>
+     * {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "kumbh Sans", sans-serif;
+}
+div{
+  color: #ffd429;
+}
+h2{
+  color: #f22d2e;
+}
+h1{
+  color: #f22d2e;
+}
+.wrapper{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50% , -50%) 
+}
+button{
+  color: #f22d2e;
+}
+div.scrollable{
+  margin: 4px, 4px;
+        padding: 4px;
+        
+        width: 400px;
+        overflow-x: auto;
+        overflow-y: auto;
+        white-space: nowrap;
+}
+
+    </style>
+  </head> 
 
   <body>
+    <div class="wrapper">
     <h1>LITDWAY Authentication system</h1>
 
   <!-- <h2>Step 1: Mint an NFT</h2>
@@ -134,21 +175,31 @@ window.chain = "rinkeby";
     <div id="mintingStatus"></div> -->
 
     <h2>Allow access to your web wallet</h2>
-    <button onclick="provisionAccess()">Allow access</button>
+  
+    <button onclick="provisionAccess()" class="mui-btn mui-btn--raised mui-btn--primary">
+      Allow access</button>
     <br />
     <br />
     <div id="provisioningStatus"></div>
 
     <h2>Request a password as a JWT </h2>
-    <button onclick="requestJwt()">Request JWT</button>
+    
+    <button class="mui-btn mui-btn--primary" onclick="requestJwt()" >
+      Request JWT
+    </button>
     <br />
     <br />
+    <div class="scrollable">
     <div id="requestingStatus"></div>
     <div id="jokeResponse"></div>
+  </div>
     <h2>
      You can now access LITDWAY DAO content
     </h2>
-    <button onclick="visitProtectedServer()">Access LITDWAY DAO </button>
+    
+    <button class="mui-btn mui-btn--primary" onclick="visitProtectedServer()" >
+      Access LITDWAY DAO
+    </button>
     <br />
     <br />
     <pre id="verificationStatus"></pre>
@@ -157,9 +208,10 @@ window.chain = "rinkeby";
     <h2>
       Any step failed or missing click this button before retrying 
     </h2>
-    <button onclick="Logout()">Clear entry</button>
+    <button class="mui-btn mui-btn--primary" onclick="Logout()">Clear entry</button>
     <br/>
     <br/>
     <div id="logout"></div>
+  </div>
   </body>
 </html>
