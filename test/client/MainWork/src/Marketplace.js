@@ -3,6 +3,7 @@ import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal"
+import { useHistory } from 'react-router';
 import Head from 'next/head'
 import { Button } from '@material-ui/core';
 
@@ -15,6 +16,7 @@ import Market from './artifacts/contracts/NFTMarket.sol/NFTMarket.json'
 const rpcEndpoint = 'https://eth-rinkeby.alchemyapi.io/v2/avpSFE4CFF97rciebprxcggQd2cF18mJ'
 
 export default function Home() {
+  let history = useHistory();
   const [nfts, setNfts] = useState([])
   const [loadingState, setLoadingState] = useState('not-loaded')
   useEffect(() => {
@@ -57,6 +59,7 @@ export default function Home() {
     })
     await transaction.wait()
     loadNFTs()
+    history.push("./Marketplace");
   }
   if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
   return (
@@ -71,7 +74,7 @@ export default function Home() {
             {
               nfts.map((nft, i) => (
                 <div key={i} className="border shadow rounded-xl overflow-hidden">
-                  <img src={nft.image} />
+                  <img src={nft.image} style={{ height: '320px', width: '350px' }} />
                   <div className="p-4">
                     <p style={{ height: '50px' }} className="text-2xl font-semibold">{nft.name}</p>
                     <div style={{ height: '60x', overflow: 'hidden' }}>

@@ -19,7 +19,7 @@ function Navhan(){
       <>
       
       <BrowserRouter>
-      <div className="App overflow-visible" style={{
+      <div className="App overflow-visible  top-0 w-full text-center border-b border-grey p-4" style={{
         height: '65px',
         display: 'flex',
         background: '#ffd429',

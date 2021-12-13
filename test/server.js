@@ -11,7 +11,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6
 function checkUser(req, res, next) {
   // always permit example.html requests to bypass authentication
   // because it represents a login page
-  if (req.url === "/example.html") {
+  if (req.url === "/Auth.html") {
     next();
     return;
   }
@@ -57,5 +57,5 @@ function checkUser(req, res, next) {
 // Set up the middleware stack
 app.use(cookieParser());
 app.use(checkUser);
-app.use("/example.html", express.static(path.join(__dirname, "example.html")));
+app.use("/Auth.html", express.static(path.join(__dirname, "Auth.html")));
 app.use("/", express.static(path.join(__dirname, "client/MainWork/build")));

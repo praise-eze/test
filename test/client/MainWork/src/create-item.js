@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button } from '@material-ui/core';
+import { Button, TextareaAutosize } from '@material-ui/core';
 import { ethers } from 'ethers'
 import { create as ipfsHttpClient } from 'ipfs-http-client'
 import Web3Modal from 'web3modal'
@@ -81,18 +81,33 @@ export default function Home() {
   }
 
   return (
-    <div className="flex justify-center">
-      <div className="w-1/2 flex flex-col pb-12">
+   <>
+   <div className="flex flex-row  " style ={{ 
+     position: 'absolute',
+  top:'50%',
+  left: '40%',
+  transform: 'translate(-50% , -50%)' }}
+   >
+   <div className='mx-10 my-5' style={{ height: '400px', width: '400px' }}>
+      
+   {
+          fileUrl && (
+            <img alt='' className="rounded mt-4 float-left" width="500" src={fileUrl} />
+          )
+        }
+   </div>
+   
+    <div className="w-full justify-center">
+      <div className="w-full flex flex-col pb-4">
+        
         <input
         required
         type='text'
           placeholder="NFT Name"
-          className="mt-8 border rounded p-4"
+          className="mt-8 border rounded p-4 w-48"
           onChange={e => updateFormInput({ ...formInput, name: e.target.value })}
         />
-        <input
-         required
-         type='text'
+        <TextareaAutosize
           placeholder="NFT Description"
           className="mt-2 border rounded p-4"
           onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
@@ -102,7 +117,7 @@ export default function Home() {
          required
          type='number'
           placeholder="NFT Price in Eth"
-          className="mt-2 border rounded p-4"
+          className="mt-2 border rounded p-4 w-48"
           onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
         />
          <img alt="" height="30px" width='30px' src='https://www.cryptologos.cc/logos/ethereum-eth-logo.svg?v=014' />
@@ -111,19 +126,17 @@ export default function Home() {
         required
           type="file"
            name="NFT"
-          className="my-4"
+          className="my-4 w-64"
           onChange={onChange}
         />
-        {
-          fileUrl && (
-            <img alt='' className="rounded mt-4" width="350" src={fileUrl} />
-          )
-        }
+       
         <br/>
         <Button variant="contained" color="primary"  onClick={createMarket} className="mt-4 bg-blue-500 text-white rounded p-4 shadow-lg">
           Create NFT
         </Button>
+        </div>
       </div>
     </div>
+    </>
   )
 }

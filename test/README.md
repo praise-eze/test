@@ -1,27 +1,29 @@
-# Intro
-
-This example code shows how to lock an entire react app behind a Lit JWT.
-
-The react app lives in the client/ folder.
-
-This can be deployed to Heroku and it should work out of the box.
-
-Note that you'll need to modify the access control conditions and resource id in server.js for your own application.
-
+# LITWAY
+LITDWAY DAO is a DAO for content(NFT) creators, that only the DAO members are entitled to create nfts and other users can simply only buy them, but if the project will be open, there need to be some form of authentication, with the LITDWAY authentication system you can verify that you own the dao nft token and can proceed to the site.   
+  
+p.s LITWAY and LITDWAY are kind of the same thing and can be use interchangeably here
 # How it works
+The authentication system has three stages:  
+  
+Stage 1: Confirm the athenticating address by signing a message.  
+Stage 2: Request a JWT which will be displayed on the app.  
+Stage 3: Access the protect LITDWAY content(NFT) creator site.    
+    
+And there is a reset button to clear your previous entries and begin a new one.  
+# Draw back  
+There was not enough time to explore the DAO site more, but if this is need i will be able to do a seperate video for this, you can join my discord so i can get your feedback.  
+# How it was built  
+LITWAY was built using the lit-protocol-js-sdk that enables users to easily token gate any content of their choice with simple javascript.  
+The authentication code is in the example.html, while the server code is in the server.js, the locked app(react build) is in client\MainWork which will show the build and the app codes.  
+To run the code, in the folder where ther is a package.json you will use `yarn` to install the dependencies and then you can start up the app at localhost, but you will need the nft purchased to access the site, so you can head to my discord and you will be provided the assistance need.  
 
-Inside server.js, we selectively serve the react app if the user presents a valid JWT created via the Lit Protocol in a query param. We save that JWT in a session cookie so that it's sent with every request, and check it on every request.
+# Submission details  
+Project Name: LITWAY
+Video Walkthrough: https://youtu.be/l3IBIMmRTSc  
+Contact Info: https://discord.gg/g8F9uuGj (join my discord for questions)   
+LITDWAY DAO NFT: Contact me to get the NFT link 
 
-You should be able to drop any react app into the "client" folder to protect it with a Lit JWT
 
-# Example code
+ 
 
-This app expects a Lit JWT in the query param "jwt". To test generating this JWT, you can use example.html.
 
-Steps:
-
-1. `cd client` and then `yarn build` to build your React app. During development, you can use `yarn start` to start the server on port 3000 instead of using `yarn build`. Note, however, that when running in dev mode via `yarn start`, the content isn't protected by server.js and any token gating or access control condition gating will not be applied.
-2. When you're ready to test the protection in server.js, and you've already build the app in the client directory with `yarn build`, then you can run `yarn start` to start the server in the root of the repository.
-3. You can then visit http://localhost:5000/example.html in your browser to see the example app. The example app will mint an NFT (step 1), provision access to this server to only permit users who hold that NFT (step 2), request a jwt to use to send to the server (step 3), and finally redirect you to the server with the JWT as a url parameter (step 4).
-
-Note that minting the nft (step 1) is entirely optional, and in your own code, you may choose to use an already existing NFT instead of minting a new one. You should choose your own accessControlConditions and resourceId and set those in example.html (if you wish to use it for testing), and in server.js.
