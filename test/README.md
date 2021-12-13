@@ -30,6 +30,8 @@ Video Walkthrough: https://youtu.be/l3IBIMmRTSc
 Contact Info: https://discord.gg/g8F9uuGj (join my discord for questions)   
 LITDWAY DAO NFT: Contact me to get the NFT link 
 
+# Extras
+Elaborate video walkthrough:
 
  
 
