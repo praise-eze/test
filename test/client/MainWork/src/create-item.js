@@ -5,7 +5,7 @@ import { create as ipfsHttpClient } from 'ipfs-http-client'
 import Web3Modal from 'web3modal'
 import web3 from 'web3'
 import { useHistory } from 'react-router';
-
+ 
 
 import {
   nftaddress, nftmarketaddress
@@ -82,13 +82,13 @@ export default function Home() {
 
   return (
    <>
-   <div className="flex flex-row  " style ={{ 
+   <div className="flex flex-row mt-10" style ={{ 
      position: 'absolute',
   top:'50%',
   left: '40%',
   transform: 'translate(-50% , -50%)' }}
    >
-   <div className='mx-10 my-5' style={{ height: '400px', width: '400px' }}>
+   <div className='mx-10 my-5' style={{ height: '450px', width: '450px' }}>
       
    {
           fileUrl && (
@@ -136,7 +136,9 @@ export default function Home() {
         </Button>
         </div>
       </div>
+     
     </div>
-    </>
+   
+      </>
   )
 }

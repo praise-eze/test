@@ -69,15 +69,16 @@ export default function Home() {
         <title>MetaX | MarketPlace</title>
       </Head>
       <div className="flex justify-center">
-        <div className="px-4" style={{ maxWidth: '1400px' }}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+        <div className="px-4 max-h-80 " style={{ maxWidth: '1400'}}>
+          <div className="max-h-80 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
             {
               nfts.map((nft, i) => (
-                <div key={i} className="border shadow rounded-xl overflow-hidden">
+                <div key={i} className="max-h-full border shadow rounded-xl overflow-hidden">
+                 
                   <img src={nft.image} style={{ height: '320px', width: '350px' }} />
-                  <div className="p-4">
-                    <p style={{ height: '50px' }} className="text-2xl font-semibold">{nft.name}</p>
-                    <div style={{ height: '60x', overflow: 'hidden' }}>
+                  <div className="p-4 max-h-80">
+                    <p style={{ height: '40px' }} className="text-2xl font-semibold">{nft.name}</p>
+                    <div style={{ height: '40x', overflow: 'hidden' }}>
                       <p className="text-gray-400">{nft.description}</p>
                     </div>
                   </div>
