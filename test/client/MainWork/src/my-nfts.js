@@ -1,7 +1,5 @@
 import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
-import { Button } from '@material-ui/core';
- 
 import web3 from 'web3'
 import axios from 'axios'
 import Web3Modal from "web3modal"
